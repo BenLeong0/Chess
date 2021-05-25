@@ -60,7 +60,9 @@ def get_bishop_moves(board, i, j):
 
     for (dx, dy) in dirs:
         x, y = i + dx, j + dy
-        while 0 <= i + x < 8 and 0 <= j + y < 8:
+        print(x,y)
+        while 0 <= x < 8 and 0 <= y < 8:
+            print(x,y)
             if board[x][y] == " ":
                 valid_moves.append(
                     f"B{ranks[j]+files[i]}{ranks[y]+files[x]}"
@@ -83,7 +85,7 @@ def get_rook_moves(board, i, j):
 
     for (dx, dy) in dirs:
         x, y = i + dx, j + dy
-        while 0 <= i + x < 8 and 0 <= j + y < 8:
+        while 0 <= x < 8 and 0 <= y < 8:
             if board[x][y] == " ":
                 valid_moves.append(
                     f"R{ranks[j]+files[i]}{ranks[y]+files[x]}"
@@ -106,7 +108,7 @@ def get_queen_moves(board, i, j):
 
     for (dx, dy) in dirs:
         x, y = i + dx, j + dy
-        while 0 <= i + x < 8 and 0 <= j + y < 8:
+        while 0 <= x < 8 and 0 <= y < 8:
             if board[x][y] == " ":
                 valid_moves.append(
                     f"Q{ranks[j]+files[i]}{ranks[y]+files[x]}"
@@ -129,6 +131,8 @@ def get_king_moves(board, i, j):
 
     for (dx, dy) in dirs:
         x, y = i + dx, j + dy
+        if x < 0 or x >= 8 or y < 0 or y >= 8:
+            continue
         if board[x][y] == " ":
             valid_moves.append(
                 f"K{ranks[j]+files[i]}{ranks[y]+files[x]}"
